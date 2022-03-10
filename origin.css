@@ -1,0 +1,88 @@
+
+    .weui-cells.custom .weui-cell {
+	    padding: 12px 15px;
+	}
+	.weui-cell {
+	    position: initial;
+	    display: flex;
+	    -webkit-box-align: center;
+	    align-items: center;
+	}
+	.weui-cells.custom .weui-cell .weui-cell__bd {
+	    max-width: 30%;
+	}
+	.weui-cell__bd {
+	    -webkit-box-flex: 1;
+	    flex: 1;
+	}
+	.r-mark {
+	    color: #f00;
+	    padding-right: 5px;
+	    font-style: normal;
+	}
+	.weui-cells.custom .weui-cell .weui-cell__ft {
+	    flex: 1;
+	    text-align: right;
+	    color: #999999;
+	}
+	.weui-input {
+	    width: 100%;
+	    border: 0;
+	    outline: 0;
+	    -webkit-appearance: none;
+	    background-color: transparent;
+	    font-size: inherit;
+	    color: inherit;
+	    height: 1.47058824em;
+	    line-height: 1.47058824;
+	}
+	.container.leavedetails .leaveinfo.notpass .info .name span {
+	    color: #fff;
+	}
+	.container.leavedetails .flow>ul>li .content .ttl {
+	    font-weight: 500;
+	}
+	.container.leavedetails .flow>ul>li .avatar {
+	    width: 40px;
+	    height: 40px;
+	    font-size: 15px;
+	}
+	.container.leavedetails .leaveinfo .infodetails .box .item span {
+	    font-weight: 500;
+	    font-size: 16px;
+	}
+	.container.leavedetails .leaveinfo .explain .box .infocontent {
+	    margin: 0;
+	    flex: 1;
+	    font-weight: 500;
+	    color: #3961b0;
+	}
+	.container.leavedetails .leaveinfo.pass .info .name span {
+	      color: #FFF;
+	}
+	#fhan{
+		transform:rotate(-180deg);
+	}
+	.info .weui-cell__ft:after {
+	    content: " ";
+	    display: inline-block;
+	    height: 6px;
+	    width: 6px;
+	    border-width: 2px 2px 0 0;
+	    border-color: #C8C8CD;
+	    border-style: solid;
+	    transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+	    position: absolute;
+	    top: 50%;
+	    margin-top: -4px;
+	    right: 10px;
+	}
+	.container.leavedetails .leaveinfo.pass:after {
+	    right: 55px;
+	    top: 67px;
+	}
+	.container.leavedetails .leaveinfo.notpass:after {
+	    right: 55px;
+	    top: 67px;
+	}
+

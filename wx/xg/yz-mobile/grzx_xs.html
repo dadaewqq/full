@@ -1,0 +1,369 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="zh-CN">
+<head>
+	<title>日常管理－学生返校及日程管理</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./lib/weui/css/weui.css"/>
+    <link rel="stylesheet" href="./lib/weui/css/weuix.css"/>
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/home.css">
+    <link rel="stylesheet" href="./css/font.css">
+    <script src="./lib/weui/js/zepto.min.js"></script>
+    <script src="./lib/weui/js/zepto.weui.js"></script>
+    <script src="./lib/weui/js/swipe.js"></script>
+    <script src="./lib/weui/js/iscroll-lite.js"></script>
+    <script type="text/javascript" src="/static/js/yz.common.js"></script>
+    <style type="text/css">
+		.red-dot {
+		    background: #d15250;
+		    border-radius: 40px;
+		    color: #FFFFFF;
+		    padding: 0 5px;
+		    font-size: 12px;
+		    margin-left: 5px;
+		}
+		#qhan{
+			color: #fff;
+			background-color: #a59c9c;
+			right: 0;
+			top: 3;
+			height: 35px;
+			width: 60px;
+			border-radius: 4px;
+		}
+		#userRoles{
+			height: 32px;
+			border: 2px solid #dddd;
+			background: #fff;
+			width: 50%;
+			/* margin-top: 10px;
+			margin-bottom: -10px; */
+			border-radius: 5px; 
+			font-size: 15px;
+		}
+		#qhdiv{
+			position: absolute;
+			top: 2px;
+			right: 2px;
+			z-index: 99;
+			width: 58%;
+		}
+		.setRole-i{width: 100%;font-size: 16px;text-align: center;}
+		.action{background-color: #0abd0d;color: #fff;}
+		#sxbut{background:rgba(57, 97, 176, 0.7);margin: 5px;border-radius: 50%;display: block;width: 35px;height: 35px;float: right;text-align: center;}
+		#sxbut .icon-101{font-size: 20px;color: #fff;line-height: 35px;}
+    </style>
+</head>
+<body>
+<div class="container usercenter">
+	<div class="topbar" style="height: 52px;">
+            <div class="top-head">
+            	<div>
+					<a href="index.html">
+						<i class="iconfont icon-back" style="color: #FFF;"></i>
+					</a>
+				</div>
+            	<div>日常管理</div>
+            	<div style="width:15px">
+					<div style="text-align: right;display: none;" id="qhdiv">
+				    	<span class="open-popup" id="sxbut" data-target="#xuanzeqi"><i class="icon icon-101"></i></span>
+				    </div>  		
+	       		</div>
+            </div>
+        </div>
+    <div class="slide" id="usercenterslide">
+        <ul>
+            <li>
+                <a  target="_self">
+                    <img src='./images/banner/banner-01.jpg' alt="">
+                </a>
+            </li>
+             <li>
+                <a  target="_self">
+                    <img src='./images/banner/banner-02.jpg' alt="">
+                </a>
+
+            </li>
+            <li>
+                <a  target="_self">
+                    <img src='./images/banner/banner-03.jpg' alt="">
+                </a>
+
+            </li> 
+        </ul>
+        <div class="dot">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <div class="title">
+        <i class="icon iconfont icon-gonggao" style="color: #ed9248;"></i>
+        <a  class="list">通知公告：</a>
+        <a  class="more">更多</a>
+    </div>
+    <div class="weui-cells custom">
+       	<a class="weui-cell weui-cell_access" >
+            <i class="icon iconfont icon-daka"></i>
+            <div class="weui-cell__bd">
+                <p>我的打卡</p>
+            </div>
+            <div class="weui-cell__ft"></div>
+        </a>
+        <input type="hidden" id="role" name="role" value=""/>
+        
+       	<a class="weui-cell weui-cell_access" style="position: relative;" href="/wx/xg/xsqj/qjsq/qjsq_list.html">
+            <i class="icon iconfont icon-qingjia"></i>
+            <div class="weui-cell__bd">
+                <p>我的请假</p>
+            </div>
+            <div class="weui-cell__ft"></div>
+            <span style="position: absolute;right: 35px;"></span>
+        </a>
+        
+       	<a class="weui-cell weui-cell_access" style="position: relative;"  >
+            <i class="icon iconfont icon-103"></i>
+            <div class="weui-cell__bd" style="max-width: 40%;">
+                <p>假期留（离）校申请</p>
+            </div>
+            <div class="weui-cell__ft"></div>
+            <span style="position: absolute;right: 35px;"></span>
+        </a>
+       	<a class="weui-cell weui-cell_access" style="position: relative;"  >
+            <i class="icon iconfont icon-107"></i>
+            <div class="weui-cell__bd" style="max-width: 40%;">
+                <p>假期返校申请</p>
+            </div>
+            <div class="weui-cell__ft"></div>
+            <span style="position: absolute;right: 35px;"></span>
+        </a>
+        
+   		<a class="weui-cell weui-cell_access"  >
+            <i class="icon iconfont icon-likai"></i>
+            <div class="weui-cell__bd">
+                <p>出入校记录</p>
+            </div>
+            <div class="weui-cell__ft"></div>
+        </a>
+        
+        <a class="weui-cell weui-cell_access"  >
+            <i class="icon iconfont icon-geliguanli"></i>
+            <div class="weui-cell__bd">
+                <p>健康异常</p>
+            </div>
+            <div class="weui-cell__ft"></div>
+        </a>
+    	
+    	<form id="form1" name="form1">
+        <a class="weui-cell weui-cell_access gcp" >
+            <i class="icon iconfont icon-geren"></i>
+            <div class="weui-cell__bd">
+                <p>个人资料</p>
+            </div>
+            <div class="weui-cell__ft"></div>
+        </a>
+        </form>
+   		
+    </div>
+    <div class="footer-copy-space">
+    	<div style="color:#999;text-align:center;font-size:13px;margin-top:10px;">主管单位：党委学生工作部（学生处）</div>
+    	<div style="color:#999;text-align:center;font-size:13px">联系电话：029-88430691</div>
+    </div>
+    <div id="xuanzeqi" class="weui-popup__container popup-bottom">
+	  <div class="weui-popup__overlay"></div>
+	  <div class="weui-popup__modal">
+   		<div class="weui-cells weui-cells_form role-list" style="height: 190px;padding-top: 5px;">
+   			
+		  <!-- <div class="weui-cell">
+			<div class="setRole-i action" >副书记</div>
+		  </div> -->
+ 		</div>
+	 </div>
+  </div>
+</div>
+<!-- <div class="footer-copy">Copyright &copy; 2021西北工业大学</div> -->
+<script>
+    $(function(){
+        $('#usercenterslide').swipeSlide({
+            autoSwipe:true,//自动切换默认是
+            speed:3000,//速度默认4000
+            continuousScroll:true,//默认否
+            transitionType:'cubic-bezier(0.22, 0.69, 0.72, 0.88)',//过渡动画linear/ease/ease-in/ease-out/ease-in-out/cubic-bezier
+            lazyLoad:true,//懒加载默认否
+            firstCallback : function(i,sum,me){
+                me.find('.dot').children().first().addClass('cur');
+            },
+            callback : function(i,sum,me){
+                me.find('.dot').children().eq(i).addClass('cur').siblings().removeClass('cur');
+            }
+        });
+    });
+    
+    function getHsjlxCon(){
+    	$.ajax({
+			url: 'hsjlx_util.jsp',
+			type: "post",
+			data:{actionType:"hsjshcon"},
+			dataType: "json",
+			success:function(data){
+				var con = data.state;
+				if(con > 0){
+					if(con > 99){
+						con = '99+';
+					}
+					$("#hsjcon").addClass("red-dot");
+					document.getElementById("hsjcon").innerText = con ; 
+				}else{
+					$("#xxhsjconcon").removeClass('red-dot');
+				}
+			}
+		});
+    }
+    
+    function getQjCon(){
+		$.ajax({
+			url: 'qj_util.jsp',
+			type: "post",
+			data:{actionType:"shcon"},
+			dataType: "json",
+			success:function(data){
+				var con = data.state.CON;
+				if(con != '0'){
+					if(con > 99){
+						con = '99+';
+					}
+					$("#xxcon").addClass("red-dot");
+					document.getElementById("xxcon").innerText = con ; 
+				}else{
+					$("#xxcon").removeClass('red-dot');
+				}
+			}
+		});
+	}
+	
+	function getYsCon(){
+		$.ajax({
+			url: 'qj_util.jsp',
+			type: "post",
+			data:{actionType:"yscon"},
+			dataType: "json",
+			success:function(data){
+				var con = data.state.CON;
+				if(con != '0'){
+					if(con > 99){
+						con = '99+';
+					}
+					$("#yscon").addClass("red-dot");
+					document.getElementById("yscon").innerText = con ; 
+				}else{
+					$("#yscon").removeClass('red-dot');
+				}
+			}
+		});
+	}
+	
+	function getGlCon(){
+		$.ajax({
+			url: 'qj_util.jsp',
+			type: "post",
+			data:{actionType:"glcon"},
+			dataType: "json",
+			success:function(data){
+				var con = data.state.CON;
+				if(con != '0'){
+					if(con > 99){
+						con = '99+';
+					}
+					$("#glcon").addClass("red-dot");
+					document.getElementById("glcon").innerText = con ; 
+				}else{
+					$("#glcon").removeClass('red-dot');
+				}
+			}
+		});
+	}
+	
+	$(function(){
+		var role = $("#role").val();
+		if(role == '2' || role == '4' || role == '02' || role == '7'){
+			getQjCon();
+		}
+		if(role == '2' || role == '4' || role == '02'  || role == '7' ){
+			getHsjlxCon();
+		}
+		if(role == '4' || role == '02' || role == '2' || role == '9' || role == '10' || role == '11'){
+			getYsCon();
+			getGlCon();
+		}
+		//查询用户角色
+		//$.ajax({
+		//	url:'qj_util.jsp',
+		//	data:{"actionType":"getRoles"},
+		//	dataType:'html',
+		//	type:'post',
+		//	success:function(data){
+		//		var ss=data.trim();
+		//		$(".role-list").html(ss);
+		//		if(''!=ss&&ss.indexOf("<div class=\"weui-cell",2)>-1 ){
+		//			$("#qhdiv").show();
+		//		}else{
+		//			$("#qhdiv").hide();
+		//		}
+		//	}
+		//});
+		
+		$('body').on('click','.setRole-i',function(){
+			var xybm=$(this).attr("data-xybm");
+			var userRoles=$(this).attr("data-value");
+			if(xybm==undefined){
+				xybm="";
+			}
+			$.ajax({
+				url:'qj_util.jsp',
+				data:{"actionType":"changeRole",userRoles:userRoles,xybm:xybm},
+				dataType:'json',
+				type:'post',
+				success:function(data){
+					window.location.reload();
+				}
+			});
+			
+		});
+		
+		
+	});
+	
+	function changeRole(){
+		var userRoles=$("#userRoles").val();
+		var xybm=$("#userRoles").find("option:selected").attr("data-xybm");
+		if(xybm==undefined){
+			xybm="";
+		}
+		$.ajax({
+			url:'qj_util.jsp',
+			data:{"actionType":"changeRole",userRoles:userRoles,xybm:xybm},
+			dataType:'json',
+			type:'post',
+			success:function(data){
+				window.location.reload();
+			}
+		});
+	}
+</script>
+<script src="js/checkdev.js"></script>
+</body>
+</html>

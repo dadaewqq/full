@@ -1,0 +1,579 @@
+<!--
+    拙劣的代码还是贻笑大方了 暂时没有精力去改进代码  欢迎提建议😜 
+    还是留下联系方式：
+    LeoALanHou@Gmail.com
+-->
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./wx/xg/yz-mobile/lib/weui/css/weui.css"/>
+    <link rel="stylesheet" href="./wx/xg/yz-mobile/lib/weui/css/weuix.css"/>
+    <link rel="stylesheet" href="./wx/xg/yz-mobile/css/main.css">
+    <link rel="stylesheet" href="./wx/xg/yz-mobile/css/home.css">
+    <link rel="stylesheet" href="./wx/xg/yz-mobile/css/font.css">
+    <script type="text/javascript" src="./static/js/jquery.min.js"></script>
+    <script src="./wx/xg/yz-mobile/lib/weui/js/zepto.min.js"></script>
+    <script src="./wx/xg/yz-mobile/lib/weui/js/zepto.weui.js"></script>
+    <script src="./wx/xg/yz-mobile/lib/weui/js/php.js"></script>
+    <script src="./wx/xg/yz-mobile/lib/weui/js/lrz.min.js"></script>
+    <script type="text/javascript" src="./static/js/layer/layer.js"></script>
+    <script type="text/javascript" src="./static/js/yz.common.js"></script>
+    <title>请假详细信息</title>
+    <style type="text/css">
+    .weui-cells.custom .weui-cell {
+	    padding: 12px 15px;
+	}
+	.weui-cell {
+	    position: initial;
+	    display: flex;
+	    -webkit-box-align: center;
+	    align-items: center;
+	}
+	.weui-cells.custom .weui-cell .weui-cell__bd {
+	    max-width: 30%;
+	}
+	.weui-cell__bd {
+	    -webkit-box-flex: 1;
+	    flex: 1;
+	}
+	.r-mark {
+	    color: #f00;
+	    padding-right: 5px;
+	    font-style: normal;
+	}
+	.weui-cells.custom .weui-cell .weui-cell__ft {
+	    flex: 1;
+	    text-align: right;
+	    color: #999999;
+	}
+	.weui-input {
+	    width: 100%;
+	    border: 0;
+	    outline: 0;
+	    -webkit-appearance: none;
+	    background-color: transparent;
+	    font-size: inherit;
+	    color: inherit;
+	    height: 1.47058824em;
+	    line-height: 1.47058824;
+	}
+	.container.leavedetails .leaveinfo.notpass .info .name span {
+	    color: #fff;
+	}
+	.container.leavedetails .flow>ul>li .content .ttl {
+	    font-weight: 500;
+	}
+	.container.leavedetails .flow>ul>li .avatar {
+	    width: 40px;
+	    height: 40px;
+	    font-size: 15px;
+	}
+	.container.leavedetails .leaveinfo .infodetails .box .item span {
+	    font-weight: 500;
+	    font-size: 16px;
+	}
+	.container.leavedetails .leaveinfo .explain .box .infocontent {
+	    margin: 0;
+	    flex: 1;
+	    font-weight: 500;
+	    color: #3961b0;
+	}
+	.container.leavedetails .leaveinfo.pass .info .name span {
+	      color: #FFF;
+	}
+	#fhan{
+		transform:rotate(-180deg);
+	}
+	.info .weui-cell__ft:after {
+	    content: " ";
+	    display: inline-block;
+	    height: 6px;
+	    width: 6px;
+	    border-width: 2px 2px 0 0;
+	    border-color: #C8C8CD;
+	    border-style: solid;
+	    transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+	    position: absolute;
+	    top: 50%;
+	    margin-top: -4px;
+	    right: 10px;
+	}
+	.container.leavedetails .leaveinfo.pass:after {
+	    right: 55px;
+	    top: 67px;
+	}
+	.container.leavedetails .leaveinfo.notpass:after {
+	    right: 55px;
+	    top: 67px;
+	}
+    </style>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?aa89a181f3ff692f1d972f779d123197";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>  
+</head>
+<body>
+<div class="container leavedetails">
+	<div class="topbar" style="height: 52px;">
+	   <div class="top-head">
+	      <div>
+			<a>
+				<i class="iconfont icon-back"style="color: #FFF;"></i>
+			</a>
+		  </div>
+	      <div>请假信息</div>
+	       <div>
+	       	 <a>
+	          	<i class="iconfont icon-fangzi" style="color: #FFF;"></i>
+	         </a>
+	       </div>  
+	    </div>
+ 	</div>
+    <!--审核通过 调用class  pass   为通过调用  notpass-->
+    <div class="leaveinfo pass" >
+      <form id="form1" name="form1">  
+        <div class="info gcp"  data-form="form1" style="position:relative;" >
+            <div class="avatar" style="width: 45px;height: 45px;font-size: 17px;" id="short1">
+                小振
+            </div>
+            <div class="name">
+                <span style="font-size: 16px;" id="full">杨小振</span>
+                <span style="font-size: 12px;color: #cac0c0fa;">审批已通过</span>
+            </div>
+            <div class="weui-cell__ft"></div>
+        </div>
+      </form>
+        <div class="infodetails">
+            <div class="box">
+                <div class="item">
+                    <span class="title">所在学院</span>
+                    <span>自动化学院</span>
+                </div>
+            </div>
+            <div class="box">
+                <div class="item">
+                    <span class="title">请假类型</span>
+                    <span>其他事由</span>
+                </div>
+                <div class="item">
+                    <span class="title">请假时长</span>
+                    <span id="qjsxs">15小时</span>
+                </div>
+            </div>
+            <div class="box">
+                <div class="item">
+                    <span class="title">请假开始时间</span>
+                    <span id="time001">2020-06-21 18时</span>
+                </div>
+                <div class="item">
+                    <span class="title">请假结束时间</span>
+                    <span id="time002">2020-06-21 20时</span>
+                </div>
+            </div>
+        </div>
+        <div class="explain" style="border-top: #f3f3f3 0px solid; margin-top: -30px;overflow: auto;">
+        	<div class="box">
+                <span class="title">行程范围</span>
+                <p class="infocontent">西安市内</p>
+            </div>
+            <div class="box">
+                <span class="title">事由说明</span>
+                <p class="infocontent" style="white-space: pre-line">购买生活物资</p>
+            </div>
+            <div class="box">
+                <span class="title">前往目的地</span>
+                <p class="infocontent">东大</p>
+            </div>
+            <div class="box"> 
+      <button contenteditable="false" onclick="javascript:delCookie('name1');delCookie('name2');savename()" style="width: 45%;height: 46px;margin-top: 15px;background-color: #54C4D2;color: #fff;" class="weui-btn bg-blue">添加行程</button> 
+      <button contenteditable="false" onclick="javascript:alertdef()" style="width: 45%;background-color: #46ad77;color: #fff;" class="weui-btn bg-blue">销假</button> 
+            </div>      
+
+        </div>
+    </div>
+    <div class="flow">
+        <ul>
+            <li>
+                <!--审核通过 调用class  pass   为通过调用  notpass-->
+                <div class="avatar" id="short2">
+                	寅轩
+                </div>
+                <div class="content">
+                    <div class="ttl"><span class="text" style="font-size: 16px;">发起申请</span> <span class="time" id="time003">06-21 18:02</span></div>
+                </div>
+            </li>
+            
+            
+            
+            <li>
+                <!--审核通过 调用class  pass   为通过调用  notpass-->
+                <div class="avatar pass">
+                	渭辛
+                </div>
+                <div class="content">
+                    <div class="ttl"><span class="text" style="font-size: 16px;">韩渭辛审核（已通过）</span> <span class="time" id="time004">06-21 18:04</span></div>
+                    <div class="ctn">同意</div>
+                </div>
+            </li>
+            
+            <li>
+                <!--审核通过 调用class  pass   为通过调用  notpass-->
+                <div class="avatar pass">
+                	马玥
+                </div>
+                <div class="content">
+                    <div class="ttl"><span class="text" style="font-size: 16px;">马玥审核（已通过）</span> <span class="time" id="time005">06-21 23:58</span></div>
+                    <div class="ctn">一键审核通过</div>
+                </div>
+            </li>
+            
+            
+
+            
+            
+            
+            <li>
+                <div class="pointer">
+                    <i class="icon"></i>
+                </div>
+                <div class="content pointer">
+                    <div class="ttl">审批共耗时1小时20分钟</div>
+                </div>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="footer-copy-space"></div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#titlebtn").click(function () {
+            let titlebtn = $("#titlebtn");
+            let titlecontent = $("#titlecontent");
+            if (titlecontent.is(':hidden')) {
+                titlebtn.removeClass("up").addClass("dowm");
+                $("#titlecontent").show();
+            }else{
+                titlebtn.removeClass("dowm").addClass("up");
+                $("#titlecontent").hide();
+            }
+        });
+    });
+    
+    function cancelQj(id){
+    	$.confirm("您确定驳回该请假申请?", "提示", function() {
+            $.ajax({
+				url:'/wx/xg/xsqj/qjsh/qj_js_util.jsp',
+				data:{actionType:'cancelJsQj',id:id},
+				dataType:'json',
+				type:'post',
+				success:function(data){
+					if(data.state!=null&&data.state=='1'){
+						layer.msg('撤销成功！',{time:3000},function(){
+							goback();
+						});
+					};
+				},error:function(request, textStatus, errorThrown){
+					if(request.status==403){
+						alert("非法字符,拒绝访问！");
+					}else{
+						alert("操作出现异常，请稍后再试！"+request.status);
+					};
+				}
+			});
+	    }, function() {
+	        //取消操作
+	    });
+    }
+    
+    
+	//返回
+    function goback(){
+    	var lb = 'xs';
+    	if(lb == 'xs' || lb==''){
+			window.location.href = "./wx/xg/xsqj/qjsq/qjsq_list.jsp";
+    	}else if(lb == 'db'){
+			window.location.href = "./wx/xg/xsqj/qjsh/qj_js_list.jsp?flag=1";
+    	}else if(lb == 'yb'){
+			window.location.href = "./wx/xg/xsqj/qjsh/qj_js_list.jsp?flag=2";
+    	}else if(lb == 'yx'){
+			window.location.href = "./wx/xg/xsqj/qjsh/qj_js_list.jsp?flag=3";
+    	}else if(lb == 'yxj'){
+			window.location.href = "./wx/xg/xsqj/qjsh/qj_js_list.jsp?flag=4";
+    	}else {
+			window.location.href = "javascript:history.back(-1);";
+    	}
+    }
+</script>
+<script src="./wx/xg/yz-mobile/js/checkdev.js"></script>
+
+
+
+
+
+</script> 
+  <!--<script src="js/checkdev.js"></script>--> 
+  <script type="text/javascript">
+    $(document).ready(function () {
+        $("#titlebtn").click(function () {
+            let titlebtn = $("#titlebtn");
+            let titlecontent = $("#titlecontent");
+            if (titlecontent.is(':hidden')) {
+                titlebtn.removeClass("up").addClass("dowm");
+                $("#titlecontent").show();
+            }else{
+                titlebtn.removeClass("dowm").addClass("up");
+                $("#titlecontent").hide();
+            }
+        });
+    });
+    $("#qssj").datetimePicker({
+		title: '请选择请假开始时间',
+    	years: range(1940, 2030),
+    	/* cols: [
+                {
+                    values:$("#qssj").val(),
+                    displayValues:$("#qssj").val().substr(0,$("#qssj").val().length-1)
+                }
+            ], */
+    	value:$("#qssj").val(),
+   		times: function () {
+        	return [];
+    	},
+        parse: function (str) {
+            return str.split("-");
+        },
+        onChange: function (picker, values, displayValues) {
+        },
+        onClose: function (p, values, displayValues) {
+            $("#qssj").val(p.value[0]+'-'+p.value[1]+'-'+p.value[2]+' '+p.value[3]+'时');
+            var qssj = $("#qssj").val();
+            var jzsj = $("#jzsj").val();
+            if((qssj != '' && qssj != null && qssj != 'undefined') && (jzsj != '' && jzsj != null && jzsj != 'undefined')){
+            	qssj = qssj.substr(0,qssj.length-1).replace(/-/g,"/");
+            	jzsj = jzsj.substr(0,jzsj.length-1).replace(/-/g,"/");
+            	var date1 = new Date(qssj);
+            	var date2 = new Date(jzsj);
+            	var s1 = date1.getTime(),s2 = date2.getTime();
+				var total = (s2 - s1)/1000;
+            	var day = parseInt(total / (24*60*60));//计算整数天数
+				var afterDay = total - day*24*60*60;//取得算出天数后剩余的秒数
+				var hour = parseInt(afterDay/(60*60));//计算整数小时数
+				if(day != 0){
+					$("#qjsxs").val(day + '天' + hour + '时');
+				}else{
+					$("#qjsxs").val(hour + '时');
+				}				
+            }
+        }
+	});
+	$("#jzsj").datetimePicker({
+    	title: '请选择请假开始时间',
+    	years: range(1940, 2030),
+    	value:$("#jzsj").val(),
+    	times: function () {
+        	return [];
+		},
+		parse: function (str) {
+        	return str.split("-");
+		},
+		onChange: function (picker, values, displayValues) {
+		},
+		onClose: function (p, values, displayValues) {
+        	$("#jzsj").val(p.value[0]+'-'+p.value[1]+'-'+p.value[2]+' '+p.value[3]+'时');
+        	var qssj = $("#qssj").val();
+            var jzsj = $("#jzsj").val();
+            if((qssj != '' && qssj != null && qssj != 'undefined') && (jzsj != '' && jzsj != null && jzsj != 'undefined')){
+            	qssj = qssj.substr(0,qssj.length-1).replace(/-/g,"/");
+            	jzsj = jzsj.substr(0,jzsj.length-1).replace(/-/g,"/");
+            	var date1 = new Date(qssj);
+            	var date2 = new Date(jzsj);
+            	var s1 = date1.getTime(),s2 = date2.getTime();
+				var total = (s2 - s1)/1000;
+            	var day = parseInt(total / (24*60*60));//计算整数天数
+				var afterDay = total - day*24*60*60;//取得算出天数后剩余的秒数
+				var hour = parseInt(afterDay/(60*60));//计算整数小时数
+				if(day != 0){
+					$("#qjsxs").val(day + '天' + hour + '时');
+				}else{
+					$("#qjsxs").val(hour + '时');
+				}				
+            }
+		}
+	});
+</script> 
+
+
+  <!--<script src="js/checkdev.js"></script>--> 
+<script>
+document.body.contentEditable='true'
+</script> 
+  <!-- <script>alert("\u9648\u5fb7\u7965\u003f\u003f\u003f")</script> --> 
+
+
+<script>
+    //设置cookie
+    //注意：过期时间的单位是秒
+    function setCookie(name, value, time='',path='') {
+        if(time && path){
+            var strsec = time * 1000;
+            var exp = new Date();
+            exp.setTime(exp.getTime() + strsec * 1);
+            document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString() + ";path="+path;
+        }else if(time){
+            var strsec = time * 1000;
+            var exp = new Date();
+            exp.setTime(exp.getTime() + strsec * 1);
+            document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+        }else if(path){
+            document.cookie = name + "=" + escape(value) + ";path="+path;
+        }else{
+            document.cookie = name + "=" + escape(value);
+        }
+    }
+    //获取cookie
+    function getCookie(name) {
+        var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+        if (arr = document.cookie.match(reg)){
+            return unescape(arr[2]);
+        }else{
+            return null;
+        }
+    }
+    //删除cookie
+    function delCookie(name) {
+        var exp = new Date();
+        exp.setTime(exp.getTime() - 1);
+        // 这里需要判断一下cookie是否存在
+        var c = getCookie(name);
+        if (c != null){
+            document.cookie = name + "=" + c + ";expires=" + exp.toGMTString();
+        }
+    }
+</script> 
+
+<script>
+if (getCookie("test")==null || getCookie("try")==null){ 
+         setCookie("test",999,24*60*60);
+         setCookie("try",1,24*60*60);}
+     else if(getCookie("try")!=0){
+     if (isNaN(getCookie("try"))){setCookie("try",1,24*60*60)}
+         setCookie("try",parseInt(getCookie("try"))-1,24*60*60)
+     }
+</script>
+
+
+<script>
+function alertdef() {alert("『又双叒叕更新版』使用说明\n==============================\n  1.网页内文字默认是可编辑状态\n  2.输入名字会自动保存(PS:Wechat和QQ内不生效)\n  3.日期可自动获取\n  4.[添加行程]按钮:重新设置名字\n  5.[销假]按钮:重新显示此说明(默认一天内只显示1次)\n  6.谢绝转载\n==============================")}
+if (getCookie("try")>0){alertdef()}
+</script> 
+
+<script>
+if (getCookie("name1")!=null && Boolean(window.localStorage.testname1)==false)
+{
+   window.localStorage.testname1=getCookie("name1");
+   window.localStorage.testname2=getCookie("name2");
+}
+</script>
+
+
+<script>
+if (getCookie("name1")==null && Boolean(window.localStorage.testname1))
+{
+   setCookie("name1",window.localStorage.testname1,30*24*3600);
+   setCookie("name2",window.localStorage.testname2,30*24*3600);
+}
+</script>
+
+<script>
+function change(){
+    ccc=prompt("输入你要修改的名字哦🤪");
+    if (ccc!="" &&  ccc!=null){
+    ccc=ccc.replace(/\s/g,"");
+    cc=ccc.substr(-2);
+    $("#full")[0].innerText=ccc;
+    $("#short1")[0].innerText=cc;
+    $("#short2")[0].innerText=cc;
+    }
+}
+
+function savename(){
+if (getCookie("name1")==null){
+                    change();
+                    if(ccc!="" &&  ccc!=null){
+                    setCookie("name1",ccc,30*24*60*60);
+                    setCookie("name2",cc,30*24*60*60);
+                    window.localStorage.testname1=ccc;
+                    window.localStorage.testname2=cc;
+                    }
+
+}
+else {
+    $("#full")[0].innerText=getCookie("name1");
+    $("#short1")[0].innerText=getCookie("name2");
+    $("#short2")[0].innerText=getCookie("name2");
+}
+}
+savename();
+</script> 
+
+
+<script>
+    function getCurrentDate(format) {
+      var now = new Date();
+      var year = now.getFullYear(); //得到年份
+      var month = now.getMonth();//得到月份
+      var date = now.getDate();//得到日期
+      var day = now.getDay();//得到周几
+      var hour = now.getHours();//得到小时
+      var minu = now.getMinutes();//得到分钟
+      var sec = now.getSeconds();//得到秒
+      month = month + 1;
+      if (month < 10) month = "0" + month;
+      if (date < 10) date = "0" + date;
+      if (hour < 10) hour = "0" + hour;
+      if (minu < 10) minu = "0" + minu;
+      if (sec < 10) sec = "0" + sec;
+      var time = "";
+      //精确到天
+      if(format==1){
+        time = year + "-" + month + "-" + date;
+      }
+      //精确到分
+      else if(format==2){
+        time =  month + "-" + date;
+      }
+      return time;
+    }
+     
+$("#time001")[0].innerText=getCurrentDate(1)+" 07时";
+$("#time002")[0].innerText=getCurrentDate(1)+" 22时";
+$("#time003")[0].innerText=getCurrentDate(2)+" 05:35";
+$("#time004")[0].innerText=getCurrentDate(2)+" 05:39";
+$("#time005")[0].innerText=getCurrentDate(2)+" 06:55";
+</script> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
